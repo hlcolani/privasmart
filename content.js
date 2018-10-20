@@ -7,20 +7,21 @@ function getQuestion() {
 	{
     	var str = JSON.stringify(result);
     	var obj = JSON.parse(str);
-		alert(obj.pointsData);
 		console.log(obj.pointsData);
 		var points = obj.pointsData;
 		for(point in points)
 		{
 			console.log("searching point " + point);
-			console.log(point);
-			console.log(points[point].tosdr.case);
+			var caseStr = points[point].tosdr.case;
+			console.log(caseStr);
+			alert(caseStr);
 		}	
 	});
 }
 
-function askQuestion() {
-	
+function askQuestion(caseStr) 
+{
+	alert("Did you know: " + caseStr);
 }
 
 function gethost() {

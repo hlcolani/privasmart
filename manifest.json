@@ -3,5 +3,13 @@
   "version": "1.0",
   "description": "Demystifying Online Privacy Policies",
   "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background" : {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action" :
+  {
+    "default_title" : "This is a signup page"
+  },
   "manifest_version": 2
 }

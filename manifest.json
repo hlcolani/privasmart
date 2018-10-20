@@ -2,14 +2,15 @@
   "name": "Privasmart",
   "version": "1.0",
   "description": "Demystifying Online Privacy Policies",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "declarativeContent", "storage", "notifications"],
   "background" : {
     "scripts": ["background.js"],
     "persistent": false
   },
   "page_action" :
   {
-    "default_title" : "This is a signup page"
+    "default_title" : "This is a signup page",
+    "default_popup": "popup.html"
   },
   "manifest_version": 2
 }

@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(function() {
+chrome.tabs.onUpdated.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [
@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
         })
       ],
       // ... show the page action.
-      actions: [new chrome.declarativeContent.ShowPageAction() ]
+      actions: [new chrome.declarativeContent.ShowPageAction() ]//, alert("Hello! I am an alert box!!")]
     }]);
   });
 });

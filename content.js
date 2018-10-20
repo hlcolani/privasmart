@@ -7,14 +7,35 @@ function getQuestion() {
 	{
     	var str = JSON.stringify(result);
     	var obj = JSON.parse(str);
-		alert(obj.pointsData);
-		console.log(obj.pointsData);
+		//alert(obj.pointsData);
+		//console.log(obj.pointsData);
 		var points = obj.pointsData;
 		for(point in points)
 		{
-			console.log("searching point " + point);
-			console.log(point);
-			console.log(points[point].tosdr.case);
+			if (points[point].tosdr.case == "This service tracks you on other websites") {
+				var answer = prompt("Does this service track you on other websites?");
+					if (answer == "yes") {
+						alert("That's correct");
+					} else {
+						alert("Wrong");
+					}
+			}
+			/*switch(point.tosdr.case) {
+				case "This service tracks you on other websites":
+					var answer = prompt("Does this service track you on other websites?");
+					if (answer == "yes") {
+						alert("That's correct");
+					} else {
+						alert("Wrong");
+					}
+				default:
+					var answer = prompt("Does this service track you on other websites?");
+						if (answer == "no") {
+							alert("That's correct");
+						} else {
+							alert("Wrong");
+						}
+			}*/
 		}	
 	});
 }

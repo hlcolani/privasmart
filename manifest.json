@@ -1,0 +1,7 @@
+{
+  "name": "Privasmart",
+  "version": "1.0",
+  "description": "Demystifying Online Privacy Policies",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "manifest_version": 2
+}

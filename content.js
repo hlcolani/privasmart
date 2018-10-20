@@ -12,7 +12,7 @@ function getQuestion() {
 		var points = obj.pointsData;
 		for(point in points)
 		{
-			if (points[point].tosdr.case == "This service tracks you on other websites") {
+			/*if (points[point].tosdr.case == "This service tracks you on other websites") {
 				var answer = prompt("Does this service track you on other websites?");
 					if (answer == "yes") {
 						alert("That's correct");
@@ -20,24 +20,34 @@ function getQuestion() {
 						alert("Wrong");
 					}
 			}
-			/*switch(point.tosdr.case) {
+			else {
+				var answer = prompt("Does this service use your personal data to employ targeted third-party advertising");
+					if (answer == "no") {
+						alert("That's correct");
+					} else {
+						alert("Wrong");
+					}
+			}*/
+
+			switch(points[point].tosdr.case) {
 				case "This service tracks you on other websites":
-					var answer = prompt("Does this service track you on other websites?");
+				    var answer = prompt("Does this service track you on other websites?");
 					if (answer == "yes") {
 						alert("That's correct");
 					} else {
 						alert("Wrong");
 					}
-				default:
-					var answer = prompt("Does this service track you on other websites?");
-						if (answer == "no") {
-							alert("That's correct");
-						} else {
-							alert("Wrong");
-						}
-			}*/
+				    return;
+				  
+}
 	
 		}
+		var answer = prompt("Does this service use your personal data to employ targeted third-party advertising?");
+				if (answer == "no") {
+					alert("That's correct");
+				} else {
+					alert("Wrong");
+				}
 	});
 }
 

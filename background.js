@@ -1,7 +1,7 @@
 chrome.tabs.onUpdated.addListener(function() {
   if chrome.declarativeContent.PageStateMatcher({css: ["input[type='password']"]
         }) {
-    alert("Hello! I am an alert box!!"
+    alert("Hello! I am an alert box!!")
   }});
 
  /* chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {

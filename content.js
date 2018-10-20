@@ -2,11 +2,11 @@
 // {
 // }
 console.log("starting content script");
+let bodyText = document.body.textContent.toLowerCase(); 
 if (
-	//document.body.textContent.indexOf("agree") && (document.body.textContent.indexOf("terms") || document.body.textContent.indexOf("privacy policy"))
-	document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
+	bodyText.includes("agree") && (bodyText.includes("terms") || bodyText.includes("privacy policy"))
+	// document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
 	) {
-	console.log(document.readyState);
 	console.log("site has password field");getQuestion();
 	console.log("injecting html");
 	$.get(chrome.extension.getURL('/popup.html'), function(data) {

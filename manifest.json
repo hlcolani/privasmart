@@ -3,14 +3,21 @@
   "version": "1.0",
   "description": "Demystifying Online Privacy Policies",
   "permissions": ["activeTab", "declarativeContent", "storage", "notifications"],
-  "background" : {
+  /*"background" : {
     "scripts": ["background.js"],
     "persistent": false
   },
   "page_action" :
   {
     "default_title" : "This is a signup page",
-    "default_popup": "popup.html"
-  },
+    "js": "popup.js"
+  },*/
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_idle",
+      "js": ["popup.js"]
+    }
+  ],
   "manifest_version": 2
 }

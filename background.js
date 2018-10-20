@@ -1,5 +1,10 @@
 chrome.tabs.onUpdated.addListener(function() {
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+  if chrome.declarativeContent.PageStateMatcher({css: ["input[type='password']"]
+        }) {
+    alert("Hello! I am an alert box!!"
+  }});
+
+ /* chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [
         // When a page contains a password...
@@ -8,7 +13,7 @@ chrome.tabs.onUpdated.addListener(function() {
         })
       ],
       // ... show the page action.
-      actions: [new chrome.declarativeContent.ShowPageAction() ]//, alert("Hello! I am an alert box!!")]
+      actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
   });
-});
+});*/

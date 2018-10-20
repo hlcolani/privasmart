@@ -10,5 +10,8 @@
       "js": ["jquery-3.3.1.min.js", "content.js"]
     }
   ],
+  "web_accessible_resources": [
+    "popup.html"
+  ],
   "manifest_version": 2
 }

@@ -36,12 +36,14 @@ function getQuestion() {
 							alert("Wrong");
 						}
 			}*/
-		}	
+	
+		}
 	});
 }
 
-function askQuestion() {
-	
+function askQuestion(caseStr) 
+{
+	alert("Did you know: " + caseStr);
 }
 
 function gethost() {

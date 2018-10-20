@@ -7,13 +7,14 @@ if (
 	bodyText.includes("agree") && (bodyText.includes("terms") || bodyText.includes("privacy policy"))
 	// document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
 	) {
-	console.log("site has password field");getQuestion();
+	console.log("site has password field");
 	console.log("injecting html");
 	$.get(chrome.extension.getURL('/popup.html'), function(data) {
 		$(data).appendTo('body');
 		// Or if you're using jQuery 1.8+:
 		// $($.parseHTML(data)).appendTo('body');
 	});
+	getQuestion();
 }
 else{
 	console.log(document.readyState);
@@ -33,6 +34,8 @@ function getQuestion() {
 			var caseStr = points[point].tosdr.case;
 			console.log(caseStr);
 			// askQuestion(caseStr);
+			document.getElementById("caseMessage").innerHTML = caseStr	;
+			break;
 		}	
 	});
 }

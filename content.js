@@ -1,16 +1,20 @@
 if (document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")) {
-	alert(getQuestion());
+	getQuestion();
 };
 
 function getQuestion() {
+	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result)
+{
+    var str = JSON.stringify(result);
+    var obj = JSON.parse(str);
+    alert(str[0]);
+});
+	
+}
 
-    	if (var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json")) {
-    		return "Terms of Service pls";
-		}
-		else {
-			return "not a real one";
-		}
-	}
+function askQuestion(a) {
+	
+}
 
 function gethost() {
 	var url = window.location.host

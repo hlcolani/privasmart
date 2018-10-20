@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [
-        // When a page contains a <video> tag...
+        // When a page contains a password...
         new chrome.declarativeContent.PageStateMatcher({
           css: ["input[type='password']"]
         })

@@ -9,7 +9,12 @@
   },
   "page_action" :
   {
+    "default_icon" : "video-19.png",
     "default_title" : "This is a signup page"
+  },
+  "icons" : {
+    "48" : "video-48.png",
+    "128" : "video-128.png"
   },
   "manifest_version": 2
 }

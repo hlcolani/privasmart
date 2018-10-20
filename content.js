@@ -4,15 +4,22 @@ if (document.getElementById("password") || document.getElementById("pass") || do
 
 function getQuestion() {
 	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result)
-{
-    var str = JSON.stringify(result);
-    var obj = JSON.parse(str);
-    alert(str[0]);
-});
-	
+	{
+    	var str = JSON.stringify(result);
+    	var obj = JSON.parse(str);
+		alert(obj.pointsData);
+		console.log(obj.pointsData);
+		var points = obj.pointsData;
+		for(point in points)
+		{
+			console.log("searching point " + point);
+			console.log(point);
+			console.log(points[point].tosdr.case);
+		}	
+	});
 }
 
-function askQuestion(a) {
+function askQuestion() {
 	
 }
 

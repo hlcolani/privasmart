@@ -4,10 +4,11 @@ chrome.runtime.onInstalled.addListener(function() {
       conditions: [
         // When a page contains a <video> tag...
         new chrome.declarativeContent.PageStateMatcher({
-          css: ["password"]
+          css: ["input[type='password']"]
         })
       ],
       // ... show the page action.
       actions: [new chrome.declarativeContent.ShowPageAction() ]
     }]);
   });
+});

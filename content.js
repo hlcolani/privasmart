@@ -101,6 +101,16 @@ function correctAns()
             document.getElementById("PrivasmartContainer").style.color = "rgb(255, 255, 255)";
         }
 
+function closePrivasmart()
+{
+	console.log("close container");
+	let elem = document.getElementById("PrivasmartContainer");
+	elem.classList.add('fadeOut');
+	setTimeout(function(){
+		elem.parentNode.removeChild(elem);
+	}, 1000);
+}
+
 function gethost(){
 	var url = window.location.host
 	var arr = url.split(".");

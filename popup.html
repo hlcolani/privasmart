@@ -14,7 +14,6 @@
         box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 6px;
     }
     .buttonStyle{
-
         position: relative; 
         font-weight: 600; 
         font-size: 16px; 
@@ -40,9 +39,9 @@
 <div id = "PrivasmartContainer" class = "privasmartContainer">
     <div style="border-radius: 3px; box-sizing: content-box; width: 290px;">
         <div data-radium="true">
-            <div style="position: relative; text-align: center; padding: 24px 28px; background-color: rgb(255, 255, 255); border-radius: 3px;">
+            <div id="privasmartContent" style="position: relative; text-align: center; padding: 24px 28px; background-color: rgb(255, 255, 255); border-radius: 3px;">
                 <div data-radium="true" style="position: absolute; top: 20px; right: 18px; opacity: 1; cursor: pointer">
-                    <button onclick="closePrivasmart()" style="background-color:rgb(255,255,255,1); border: none; cursor: pointer" aria-label="Close" >
+                    <button id="closeButton" onclick="closePrivasmart()" style="background-color:rgb(255,255,255,1); border: none; cursor: pointer" aria-label="Close" >
                         <span aria-hidden="true" style="font-size: 22px">&times;</span>
                     </button>
                 </div>
@@ -65,12 +64,12 @@
         function correctAns()
         {
             console.log("correct answer");
-            window.location.replace("https://google.com");
+            document.getElementById("privasmartContent").style.backgroundColor = "rgb(67, 239, 95)";
+            document.getElementById("closeButton").style.backgroundColor = "rgb(67, 239, 95)";
         }
         function incorrectAns()
         {
             console.log("incorrect answer");
-            window.location.replace("https://yahoo.com");
         }
         function closePrivasmart()
         {

@@ -1,11 +1,12 @@
 console.log("starting content script");
 let bodyText = document.body.textContent.toLowerCase();
-const expr = /(\bi\b)|(\byou\b).*(\bagree\b)|(\bunderstand\b)|(\backnowledge\b).*(\bterms\b)|(\bprivacy policy\b)/;
+const expr = /((\bi\b)|(\byou\b)).*((\bagree\b)|(\bunderstand\b)|(\backnowledge\b)).*((\bterms\b)|(\bprivacy policy\b))/;
 if (bodyText.search(expr) !== -1) {
 	// bodyText.includes("agree") && (bodyText.includes("terms") || bodyText.includes("privacy policy")
 	// document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
-	for (let m in bodyText.match(expr)) {
-		console.log(m);
+	let matches = bodyText.match(expr)
+	for (let m in matches) {
+		console.log(matches[m]);
 	}
 
 	console.log("site has terms of service or privacy policy");

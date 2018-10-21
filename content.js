@@ -70,15 +70,36 @@ function askQuestion(questionStr, correct){
 	caseMessage.innerHTML = questionStr;
 	if(correct)
 	{
-		document.getElementById("trueButton").setAttribute( "onclick", "javascript: correctAns();");
-		document.getElementById("falseButton").setAttribute( "onclick", "javascript: incorrectAns();");
+		document.getElementById("trueButton").addEventListener("click", correctAns);
+		document.getElementById("falseButton").addEventListener("click", incorrectAns);
 	}
 	else
 	{
-		document.getElementById("falseButton").setAttribute( "onclick", "javascript: correctAns();");
-		document.getElementById("trueButton").setAttribute( "onclick", "javascript: incorrectAns();");
+		document.getElementById("trueButton").addEventListener("click", incorrectAns);
+		document.getElementById("falseButton").addEventListener("click", correctAns);
 	}
 }
+
+function correctAns()
+        {
+            console.log("correct answer");
+            document.getElementById("caseMessage").style.textAlign = "center";
+            document.getElementById("caseMessage").innerHTML = "Correct!";
+            document.getElementById("privasmartContent").style.backgroundColor = "rgb(67, 239, 95)";
+            document.getElementById("closeButton").style.backgroundColor = "rgb(67, 239, 95)";
+            setTimeout(function(){}, 2000);
+            closePrivasmart();
+        }
+        function incorrectAns()
+        {
+            console.log("incorrect answer");
+            document.getElementById("caseMessage").style.textAlign = "center";
+            let arr = window.location.host.split(".");
+            document.getElementById("caseMessage").innerHTML = "Wrong! <a href='https://tosdr.org/#" + arr[arr.length - 2] + "'>Click here</a> to learn more.";
+            document.getElementById("privasmartContent").style.backgroundColor = "rgb(188, 23, 0)";
+            document.getElementById("closeButton").style.backgroundColor = "rgb(188, 23, 0)";
+            document.getElementById("PrivasmartContainer").style.color = "rgb(255, 255, 255)";
+        }
 
 function gethost(){
 	var url = window.location.host

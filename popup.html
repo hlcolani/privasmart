@@ -46,7 +46,7 @@
         <div data-radium="true">
             <div id="privasmartContent" style="position: relative; text-align: center; padding: 24px 28px; background-color: rgb(255, 255, 255); border-radius: 3px;">
                 <div data-radium="true" style="position: absolute; top: 20px; right: 18px; opacity: 1; cursor: pointer">
-                    <button id="closeButton" onclick="closePrivasmart()" style="background-color:rgb(255,255,255,1); border: none; cursor: pointer" aria-label="Close" >
+                    <button id="closeButton" style="background-color:rgb(255,255,255,1); border: none; cursor: pointer" aria-label="Close" >
                         <span aria-hidden="true" style="font-size: 22px">&times;</span>
                     </button>
                 </div>
@@ -86,6 +86,9 @@
             document.getElementById("closeButton").style.backgroundColor = "rgb(188, 23, 0)";
             document.getElementById("PrivasmartContainer").style.color = "rgb(255, 255, 255)";
         }
+
+        document.getElementById("closeButton").addEventListener("click", closePrivasmart);
+
         function closePrivasmart()
         {
             console.log("close container");

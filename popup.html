@@ -79,6 +79,11 @@
         function incorrectAns()
         {
             console.log("incorrect answer");
+            document.getElementById("caseMessage").style.textAlign = "center";
+            document.getElementById("caseMessage").innerHTML = "Wrong! <a href='tosdr.org'>Click here</a> to learn more.";
+            document.getElementById("privasmartContent").style.backgroundColor = "rgb(188, 23, 0)";
+            document.getElementById("closeButton").style.backgroundColor = "rgb(188, 23, 0)";
+            document.getElementById("PrivasmartContainer").style.color = "rgb(255, 255, 255)";
         }
         function closePrivasmart()
         {

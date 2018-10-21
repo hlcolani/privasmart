@@ -29,7 +29,7 @@ function getQuestion(){
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
-		console.log("HI1");
+		console.log("Generating question");
 		if(Math.random() < 0.5) {
 		// ask a correct question
 			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
@@ -38,8 +38,7 @@ function getQuestion(){
 			var topics = Object.keys(allCases);
 			var topic = topics[topics.length * Math.random() << 0];
 			var tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
-			var same = true
-			var test = 0
+			var same = true;
 			while (same) {
 				same = false
 				topic = topics[topics.length * Math.random() << 0];
@@ -50,7 +49,6 @@ function getQuestion(){
 					}
 				}
 			}
-			
 			askQuestion(tc, false);
 		}
 	});

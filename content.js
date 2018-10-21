@@ -1,5 +1,7 @@
 console.log("starting content script");
 let bodyText = document.body.textContent.toLowerCase();
+bodyText = bodyText.replace(/[\n\r]/g, '');
+console.log(bodyText.trim());
 const expr = /((\bi\b)|(\byou\b)).*((\bagree\b)|(\bunderstand\b)|(\backnowledge\b)).*((\bterms\b)|(\bprivacy policy\b))/;
 if (bodyText.search(expr) !== -1) {
 	// bodyText.includes("agree") && (bodyText.includes("terms") || bodyText.includes("privacy policy")

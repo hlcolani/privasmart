@@ -24,27 +24,26 @@ function getQuestion(){
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
-		if(Math.random() < 0) {
-			// ask a true statement
+		console.log("Generating question");
+		if(Math.random() < 0.5) {
+		// ask a correct question
 			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
 		}
 		else {
 			var topics = Object.keys(allCases);
 			var topic = topics[topics.length * Math.random() << 0];
 			var tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
-			var same = true
-			// while (same) {
-			// 	same == false
-			// 	topic = topics[topics.length * Math.random() << 0];
-			// 	tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
-			// 	for (c in points) {
-			// 		if (tc == obj.pointsData[c]) {
-			// 			//alert(obj.pointsData[c]);
-			// 			same == true;
-			// 		}
-			// 	}
-			// }
-			console.log(tc);
+			var same = true;
+			while (same) {
+				same = false
+				topic = topics[topics.length * Math.random() << 0];
+				tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
+				for (c in points) {
+					if (tc == obj.pointsData[c]) {
+						same == true;
+					}
+				}
+			}
 			askQuestion(tc, false);
 		}
 	});

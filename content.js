@@ -1,67 +1,80 @@
-if (document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")) {
-	getQuestion();
-};
+console.log("starting content script");
+let bodyText = document.body.textContent.toLowerCase();
+bodyText = bodyText.replace(/[\n\r]/g, '');
+console.log(bodyText.trim());
+const expr = /((\bi\b)|(\byou\b)).*((\bagree\b)|(\bunderstand\b)|(\backnowledge\b)).*((\bterms\b)|(\bprivacy policy\b))/;
+if (bodyText.search(expr) !== -1) {
+	// bodyText.includes("agree") && (bodyText.includes("terms") || bodyText.includes("privacy policy")
+	// document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
+	let matches = bodyText.match(expr)
+	for (let m in matches) {
+		console.log(matches[m]);
+	}
 
-function getQuestion() {
-	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result)
-	{
-    	var str = JSON.stringify(result);
+	console.log("site has terms of service or privacy policy");
+	getQuestion();
+}
+else{
+	console.log(document.readyState);
+	console.log("DOM not loaded yet?");
+}
+
+function getQuestion(){
+	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result) {
+		injectHTML();
+		var str = JSON.stringify(result);
     	var obj = JSON.parse(str);
-		//alert(obj.pointsData);
-		//console.log(obj.pointsData);
-		var points = obj.pointsData;
-		for(point in points)
-		{
-			switch(points[point].tosdr.case) {
-				case "This service tracks you on other websites":
-				    var answer = prompt("Does this service track you on other websites?");
-					if (answer == "yes") {
-						alert("That's correct");
-					} else {
-						alert("Wrong");
-					}
-				    return;
-				case "You can request access and deletion of personal data":
-					var answer = prompt("Can you can request access and deletion of personal data?");
-					if (answer == "yes") {
-						alert("That's correct");
-					} else {
-						alert("Wrong");
-					}
-				    return;
-				case " Terms may be changed any time at their discretion, without notice to the user ":
-					var answer = prompt("Can terms be changed any time without notice to the user?");
-					if (answer == "yes") {
-						alert("That's correct");
-					} else {
-						alert("Wrong");
-					}
-				    return;
-				case "The service can delete specific content without prior notice and without a reason":
-					var answer = prompt("Does the service have to notify you or give a reason for deleting content?");
-					if (answer == "no") {
-						alert("That's correct");
-					} else {
-						alert("Wrong");
-					}
-				    return;
-			}
+		console.log(obj.pointsData);
+		var points = Object.keys(obj.pointsData);
+		console.log("Generating question");
+		if(Math.random() < 0.5) {
+		// ask a correct question
+			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
 		}
-		var answer = prompt("Does this service use your personal data to employ targeted third-party advertising?");
-			if (answer == "no") {
-				alert("That's correct");
-			} else {
-				alert("Wrong");
+		else {
+			var topics = Object.keys(allCases);
+			var topic = topics[topics.length * Math.random() << 0];
+			var tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
+			var same = true;
+			while (same) {
+				same = false
+				topic = topics[topics.length * Math.random() << 0];
+				tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
+				for (c in points) {
+					if (tc == obj.pointsData[c]) {
+						same == true;
+					}
+				}
 			}
+			askQuestion(tc, false);
+		}
 	});
 }
 
-function askQuestion(caseStr) 
-{
-	alert("Did you know: " + caseStr);
+function askQuestion(questionStr, correct){
+	document.getElementById("caseMessage").innerHTML = questionStr;
+	if(correct)
+	{
+		document.getElementById("trueButton").setAttribute( "onclick", "javascript: correctAns();");
+		document.getElementById("falseButton").setAttribute( "onclick", "javascript: incorrectAns();");
+	}
+	else
+	{
+		document.getElementById("falseButton").setAttribute( "onclick", "javascript: correctAns();");
+		document.getElementById("trueButton").setAttribute( "onclick", "javascript: incorrectAns();");
+	}
 }
 
-function gethost() {
+function injectHTML(){
+	console.log("injecting html");
+	$.get(chrome.extension.getURL('/popup.html'), function(data) {
+		$(data).appendTo('body');
+		// Or if you're using jQuery 1.8+:
+		// $($.parseHTML(data)).appendTo('body');
+	});
+}
+
+function gethost(){
 	var url = window.location.host
 	var arr = url.split(".");
 	return arr[arr.length - 2]

@@ -7,11 +7,14 @@
     {
       "matches": ["<all_urls>"],
       "run_at": "document_idle",
-      "js": ["jquery-3.3.1.min.js", "content.js"]
+      "js": ["cases.js", "jquery-3.3.1.min.js", "content.js"]
     }
   ],
   "icons": {
     "128":"logo.png"
   },
+  "web_accessible_resources": [
+    "popup.html"
+  ],
   "manifest_version": 2
 }

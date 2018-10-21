@@ -12,6 +12,11 @@
         margin-top: 16px;
         margin-right: 16px;
         box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 6px;
+        transition: opacity 1000ms;
+    }
+    .privasmartContainer.fadeOut
+    {
+        opacity: 0;
     }
     .buttonStyle{
         position: relative; 
@@ -64,8 +69,12 @@
         function correctAns()
         {
             console.log("correct answer");
+            document.getElementById("caseMessage").style.textAlign = "center";
+            document.getElementById("caseMessage").innerHTML = "Correct!";
             document.getElementById("privasmartContent").style.backgroundColor = "rgb(67, 239, 95)";
             document.getElementById("closeButton").style.backgroundColor = "rgb(67, 239, 95)";
+            setTimeout(function(){}, 2000);
+            closePrivasmart();
         }
         function incorrectAns()
         {
@@ -75,7 +84,10 @@
         {
             console.log("close container");
             let elem = document.getElementById("PrivasmartContainer");
-            elem.parentNode.removeChild(elem);
+            elem.classList.add('fadeOut');
+            setTimeout(function(){
+                elem.parentNode.removeChild(elem);
+            }, 1000);
         }
     </script>
 </div>

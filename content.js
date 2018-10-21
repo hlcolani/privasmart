@@ -45,8 +45,8 @@ function askQuestion(questionStr, correct){
 	}
 	else
 	{
-		document.getElementById("falseButton").onclick = "correctAns();"
-		document.getElementById("trueButton").onclick = "incorrectAns();";
+		document.getElementById("falseButton").setAttribute( "onclick", "javascript: correctAns();");
+		document.getElementById("trueButton").setAttribute( "onclick", "javascript: incorrectAns();");
 	}
 }
 

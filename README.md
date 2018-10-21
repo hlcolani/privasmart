@@ -11,7 +11,7 @@ Install Google Chrome [here](https://www.google.com/chrome/)
 ### Installing
 
 1. Clone this repo
-2. Open up Chrome and go to [chrome://extensions/](chrome://extensions/)
+2. Open up Chrome and go to chrome://extensions/
 3. Enable developer mode
 4. Click on “Load unpacked extension…”
 5. Select the folder for this app

@@ -41,8 +41,10 @@
     <div style="border-radius: 3px; box-sizing: content-box; width: 290px;">
         <div data-radium="true">
             <div style="position: relative; text-align: center; padding: 24px 28px; background-color: rgb(255, 255, 255); border-radius: 3px;">
-                <div data-radium="true" style="position: absolute; top: 20px; right: 18px; opacity: 1; cursor: pointer;">
-                    <div data-radium="true" style="color: rgb(192, 192, 192); font-size: 22px;">×</div>
+                <div data-radium="true" style="position: absolute; top: 20px; right: 18px; opacity: 1; cursor: pointer">
+                    <button onclick="closePrivasmart()" style="background-color:rgb(255,255,255,1); border: none; cursor: pointer" aria-label="Close" >
+                        <span aria-hidden="true" style="font-size: 22px">&times;</span>
+                    </button>
                 </div>
                 <div data-radium="true" style="text-align: center; font-weight: 600; font-size: 18px; margin-bottom: 22px; color: rgb(41, 42, 42); margin-top: 5px;">
                     Privasmart
@@ -65,11 +67,16 @@
             console.log("correct answer");
             window.location.replace("https://google.com");
         }
-
         function incorrectAns()
         {
             console.log("incorrect answer");
             window.location.replace("https://yahoo.com");
+        }
+        function closePrivasmart()
+        {
+            console.log("close container");
+            let elem = document.getElementById("PrivasmartContainer");
+            elem.parentNode.removeChild(elem);
         }
     </script>
 </div>

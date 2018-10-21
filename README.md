@@ -36,7 +36,8 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Example
 
-![gif](http://g.recordit.co/fH7dqA6tn0.gif)
+![gif1](http://g.recordit.co/fH7dqA6tn0.gif)
+![gif2](http://g.recordit.co/UAgDdQ3sPm.gif)
 
 ## Built With
 

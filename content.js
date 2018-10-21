@@ -24,15 +24,30 @@ function getQuestion(){
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
-		askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
-		// for(point in points){
-		// 	console.log("searching point " + point);
-		// 	var caseStr = points[point].tosdr.case;
-		// 	console.log(caseStr);
-		// 	// askQuestion(caseStr);
-		// 	document.getElementById("caseMessage").innerHTML = caseStr;
-		// 	break;
-		// }	
+		if(Math.random() < 0.5) {
+		// ask a correct question
+			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
+		}
+		else {
+			var topics = Object.keys(allCases);
+			var topic = topics[topics.length * Math.random() << 0];
+			var tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
+			var same = true
+			while (same) {
+				same == false
+				topic = topics[topics.length * Math.random() << 0];
+				tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
+				//alert(obj.pointsData[points[0]].tosdr.case);
+				for (c in points) {
+					if (tc == obj.pointsData[c]) {
+						alert(obj.pointsData[c]);
+						same == true;
+					}
+				}
+			}
+			//console.log(tc);
+			askQuestion(tc, false);
+		}
 	});
 }
 

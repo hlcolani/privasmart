@@ -25,7 +25,7 @@ function getQuestion(){
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
 		if(Math.random() < 0.5) {
-		// ask a correct question
+			// ask a true statement
 			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
 		}
 		else {
@@ -45,7 +45,7 @@ function getQuestion(){
 					}
 				}
 			}
-			//console.log(tc);
+			console.log(tc);
 			askQuestion(tc, false);
 		}
 	});

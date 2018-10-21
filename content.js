@@ -6,11 +6,11 @@ if (bodyText.search(expr) !== -1) {
 	// document.getElementById("password") || document.getElementById("pass") || document.getElementById("psw") || document.getElementById("new-password")
 	let matches = bodyText.match(expr)
 	for (let m in matches) {
-		console.log(matches[m]);
+		// console.log(matches[m]);
 	}
 
 	console.log("site has terms of service or privacy policy");
-	getQuestion();
+	injectHTML();
 }
 else{
 	console.log(document.readyState);
@@ -19,7 +19,6 @@ else{
 
 function getQuestion(){
 	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result) {
-		injectHTML();
 		var str = JSON.stringify(result);
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
@@ -27,6 +26,7 @@ function getQuestion(){
 		console.log("Generating question");
 		if(Math.random() < 0.5) {
 		// ask a correct question
+			console.log("asking question");
 			askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
 		}
 		else {
@@ -44,13 +44,28 @@ function getQuestion(){
 					}
 				}
 			}
+			console.log("asking question");
 			askQuestion(tc, false);
 		}
 	});
 }
 
+function injectHTML(){
+	$.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result) {
+		console.log("injecting html");
+		$.get(chrome.extension.getURL('/popup.html'), function(data) {
+			$(data).appendTo('body');
+			console.log("html injection complete");
+		// Or if you're using jQuery 1.8+:
+		// $($.parseHTML(data)).appendTo('body');
+			getQuestion();
+		});
+	});
+}
+
 function askQuestion(questionStr, correct){
-	document.getElementById("caseMessage").innerHTML = questionStr;
+	let caseMessage = document.getElementById("caseMessage");
+	caseMessage.innerHTML = questionStr;
 	if(correct)
 	{
 		document.getElementById("trueButton").setAttribute( "onclick", "javascript: correctAns();");
@@ -61,15 +76,6 @@ function askQuestion(questionStr, correct){
 		document.getElementById("falseButton").setAttribute( "onclick", "javascript: correctAns();");
 		document.getElementById("trueButton").setAttribute( "onclick", "javascript: incorrectAns();");
 	}
-}
-
-function injectHTML(){
-	console.log("injecting html");
-	$.get(chrome.extension.getURL('/popup.html'), function(data) {
-		$(data).appendTo('body');
-		// Or if you're using jQuery 1.8+:
-		// $($.parseHTML(data)).appendTo('body');
-	});
 }
 
 function gethost(){

@@ -10,12 +10,6 @@ if (bodyText.search(expr) !== -1) {
 	}
 
 	console.log("site has terms of service or privacy policy");
-	console.log("injecting html");
-	$.get(chrome.extension.getURL('/popup.html'), function(data) {
-		$(data).appendTo('body');
-		// Or if you're using jQuery 1.8+:
-		// $($.parseHTML(data)).appendTo('body');
-	});
 	getQuestion();
 }
 else{
@@ -25,7 +19,8 @@ else{
 
 function getQuestion(){
 	var a = $.getJSON("https://tosdr.org/api/1/service/" + gethost() + ".json", function(result) {
-    	var str = JSON.stringify(result);
+		injectHTML();
+		var str = JSON.stringify(result);
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
@@ -66,6 +61,15 @@ function askQuestion(questionStr, correct){
 		document.getElementById("falseButton").setAttribute( "onclick", "javascript: correctAns();");
 		document.getElementById("trueButton").setAttribute( "onclick", "javascript: incorrectAns();");
 	}
+}
+
+function injectHTML(){
+	console.log("injecting html");
+	$.get(chrome.extension.getURL('/popup.html'), function(data) {
+		$(data).appendTo('body');
+		// Or if you're using jQuery 1.8+:
+		// $($.parseHTML(data)).appendTo('body');
+	});
 }
 
 function gethost(){

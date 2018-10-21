@@ -37,10 +37,9 @@ function getQuestion(){
 				same == false
 				topic = topics[topics.length * Math.random() << 0];
 				tc = allCases[topic][allCases[topic].length * Math.random() << 0].name;
-				//alert(obj.pointsData[points[0]].tosdr.case);
 				for (c in points) {
 					if (tc == obj.pointsData[c]) {
-						alert(obj.pointsData[c]);
+						//alert(obj.pointsData[c]);
 						same == true;
 					}
 				}

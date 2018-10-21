@@ -24,7 +24,7 @@ function getQuestion(){
     	var obj = JSON.parse(str);
 		console.log(obj.pointsData);
 		var points = Object.keys(obj.pointsData);
-		document.getElementById("caseMessage").innerHTML = obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case;
+		askQuestion(obj.pointsData[points[points.length * Math.random() << 0]].tosdr.case, true);
 		// for(point in points){
 		// 	console.log("searching point " + point);
 		// 	var caseStr = points[point].tosdr.case;
@@ -36,8 +36,18 @@ function getQuestion(){
 	});
 }
 
-function askQuestion(caseStr){
-	alert("Did you know: " + caseStr);
+function askQuestion(questionStr, correct){
+	document.getElementById("caseMessage").innerHTML = questionStr;
+	if(correct)
+	{
+		document.getElementById("trueButton").setAttribute( "onclick", "javascript: correctAns();");
+		document.getElementById("falseButton").setAttribute( "onclick", "javascript: incorrectAns();");
+	}
+	else
+	{
+		document.getElementById("falseButton").onclick = "correctAns();"
+		document.getElementById("trueButton").onclick = "incorrectAns();";
+	}
 }
 
 function gethost(){

@@ -9,8 +9,12 @@
         x: initial; 
         y: initial; 
         z-index: 2147483647;
+        margin-top: 16px;
+        margin-right: 16px;
+        box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 6px;
     }
     .buttonStyle{
+
         position: relative; 
         font-weight: 600; 
         font-size: 16px; 
@@ -26,8 +30,8 @@
         background-size: 18px 18px; 
         border-width: 1px; 
         border-style: solid; 
-        border-color: rgb(255, 126, 39); 
-        background-color: rgb(255, 126, 39); 
+        border-color: rgb(153, 0, 38); 
+        background-color: rgb(153, 0, 38);  
         cursor: pointer; 
         background-image: none; 
         width: 30%; 
@@ -48,18 +52,24 @@
                     
                 </div>
                 <hr>
-                <div style="text-align: center; font-weight: 600; font-size: 18px; margin-bottom: 22px; color: rgb(41, 42, 42); margin-top: 5px;">
-                    <button id="trueButton" class="buttonStyle" onclick= "test()" style="margin-left: auto; margin-right: 20px">True</button>
+                <div style="text-align: center; font-weight: 600; font-size: 18px; margin-top: auto; color: rgb(41, 42, 42); margin-top: 5px;">
+                    <button id="trueButton" class="buttonStyle" style="margin-left: auto; margin-right: 20px">True</button>
                     <button id="falseButton" class="buttonStyle" style="margin-right: auto; margin-left: 20px">False</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function test()
+        function correctAns()
         {
-            console.log("button clicked");
+            console.log("correct answer");
             window.location.replace("https://google.com");
+        }
+
+        function incorrectAns()
+        {
+            console.log("incorrect answer");
+            window.location.replace("https://yahoo.com");
         }
     </script>
 </div>

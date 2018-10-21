@@ -2,7 +2,7 @@
 
 # Privasmart
 
-Privasmart is a Google Chrome extension that helps users understand complex privacy statements. When signing up for a site with a privacy statement, Privasmart prompts them to answer a quiz question. If incorrect, the user is redirected to a decoded version of the policy in simplified English.  
+Privasmart is a Google Chrome extension that helps users understand complex privacy statements. On a site with a privacy statement, Privasmart creates a popup quiz question. If incorrect, the user is redirected to a decoded version of the policy in simplified English.  
 
 ## Getting Started
 

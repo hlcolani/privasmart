@@ -6,33 +6,15 @@ Privasmart is a Google Chrome extension that helps users understand complex priv
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Install Google Chrome [here](https://www.google.com/chrome/)
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+1. Clone this repo
+2. Open up Chrome and go to the extensions page
+3. Enable developer mode
+4. Click on “Load unpacked extension…”
+5. Select the folder for this app
 
 ## Example
 

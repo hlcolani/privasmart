@@ -1,4 +1,4 @@
-![Privasmart Logo]((https://user-images.githubusercontent.com/34951055/47262760-d360a080-d4be-11e8-8dee-33ad2d395f84.png))
+![logo](https://user-images.githubusercontent.com/34951055/47262760-d360a080-d4be-11e8-8dee-33ad2d395f84.png)
 
 # Privasmart
 
